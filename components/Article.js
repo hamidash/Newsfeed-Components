@@ -85,6 +85,38 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'Random Test Article',
+    date: 'Jan 1st, 2020',
+    firstParagraph: `Hodor hodor HODOR! Hodor hodor - hodor, hodor. Hodor hodor... Hodor hodor hodor; hodor hodor. Hodor hodor hodor, hodor, hodor
+          hodor. Hodor, hodor. Hodor. Hodor, hodor - hodor... Hodor hodor hodor; hodor HODOR hodor, hodor hodor?! Hodor hodor, hodor.
+          Hodor hodor hodor hodor hodor! Hodor hodor - HODOR hodor, hodor hodor hodor hodor hodor; hodor hodor? `,
+
+    secondParagraph: `Hodor, hodor. Hodor. Hodor, hodor, hodor. Hodor hodor, hodor. Hodor hodor, hodor, hodor hodor. Hodor! Hodor hodor, hodor;
+          hodor hodor hodor? Hodor, hodor. Hodor. Hodor, hodor - HODOR hodor, hodor hodor hodor! Hodor, hodor. Hodor. Hodor, HODOR
+          hodor, hodor hodor, hodor, hodor hodor. Hodor hodor - hodor - hodor... Hodor hodor hodor hodor hodor hodor hodor?! Hodor
+          hodor - hodor hodor hodor. Hodor. Hodor hodor... Hodor hodor hodor hodor hodor? `,
+
+    thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
+          Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
+          Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'Lambda Article',
+    date: 'Mar 1st, 2020',
+    firstParagraph: `Hodor hodor HODOR! Hodor hodor - hodor, hodor. Hodor hodor... Hodor hodor hodor; hodor hodor. Hodor hodor hodor, hodor, hodor
+          hodor. Hodor, hodor. Hodor. Hodor, hodor - hodor... Hodor hodor hodor; hodor HODOR hodor, hodor hodor?! Hodor hodor, hodor.
+          Hodor hodor hodor hodor hodor! Hodor hodor - HODOR hodor, hodor hodor hodor hodor hodor; hodor hodor? `,
+
+    secondParagraph: `Hodor, hodor. Hodor. Hodor, hodor, hodor. Hodor hodor, hodor. Hodor hodor, hodor, hodor hodor. Hodor! Hodor hodor, hodor;
+          hodor hodor hodor? Hodor, hodor. Hodor. Hodor, hodor - HODOR hodor, hodor hodor hodor! Hodor, hodor. Hodor. Hodor, HODOR
+          hodor, hodor hodor, hodor, hodor hodor. Hodor hodor - hodor - hodor... Hodor hodor hodor hodor hodor hodor hodor?! Hodor
+          hodor - hodor hodor hodor. Hodor. Hodor hodor... Hodor hodor hodor hodor hodor? `,
+
+    thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
+          Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
+          Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
   }
 ];
 
@@ -96,8 +128,9 @@ const data = [
 
     {three separate paragraph elements}
 
-    <span class='expandButton'>+</span>
+    <span class='expandButton'></span>
   </div>
+
 
   Hint: You will need to use createElement more than once here!
 
@@ -111,3 +144,65 @@ const data = [
 
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 */
+
+function articleMaker(title, date, firstParagraph, secondParagraph, thirdParagraph) {
+
+  //1. Create Elements for the component and save it to a variable, and add class if needed to 
+
+  let articleDiv = document.createElement('div');
+  articleDiv.classList.add('article');
+  
+  let articleH2 = document.createElement('h2');
+  articleH2.textContent = title;
+
+  let articleParagDate = document.createElement('p');
+  articleParagDate.classList.add('date');
+  articleParagDate.textContent = date;
+  
+  
+  let articleParagContent1 = document.createElement('p');
+  articleParagContent1.classList.add('content');
+  articleParagContent1.textContent = firstParagraph;
+  
+
+  let articleParagContent2 = document.createElement('p');
+  articleParagContent2.classList.add('content');
+  articleParagContent2.textContent = secondParagraph;
+
+  let articleParagContent3 = document.createElement('p');
+  articleParagContent3.classList.add('content');
+  articleParagContent3.textContent = thirdParagraph;
+  
+  let articleSpan = document.createElement('span');
+  articleSpan.classList.add('expandButton');
+  articleSpan.textContent = "click here";
+  //Step2: add EventListener to span to toggle articleDiv with 'article-open' class
+  articleSpan.addEventListener('click',(event)=>{
+    articleDiv.classList.toggle('article-open');
+  })
+  
+  //2.Add all created elements to Div parent element
+  articleDiv.appendChild(articleH2);
+  articleDiv.appendChild(articleParagDate);
+  articleDiv.appendChild(articleParagContent1);
+  articleDiv.appendChild(articleParagContent2);
+  articleDiv.appendChild(articleParagContent3);
+  articleDiv.appendChild(articleSpan);
+
+  //console.log(articleDiv);
+  
+  return articleDiv;
+
+}
+
+
+const articlesDiv = document.querySelector('.articles');
+
+data.forEach((item)=>{
+  const newArticle = articleMaker(item.title, item.date, item.firstParagraph, item.secondParagraph, item.thirdParagraph);
+  articlesDiv.appendChild(newArticle);
+})
+
+
+
+//console.log(articlesDiv);
